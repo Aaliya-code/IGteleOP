@@ -51,36 +51,31 @@ public class IGteleOp extends LinearOpMode {
     //0.5 is deployed
 
     waitForStart();
-
-    while(opModeIsActive()) {
-      if (gamepad1.right_trigger > 0.1) {
-        intakePiviot.setPosition(1.0);
-        armPiviot.setPower(0.5);
-      }
-      else{
-        intakePiviot.setPostion(0);
-        armPiviot.setPower(0);
-      }
-      if (gamepad1.left_trigger > 0.1) {
-        intakePiviot.setPosition(0.5);
-      }
-    }
-
     //Drive Code
 
 
         while(opModeIsActive()) {
 
-            frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");
-            backLeft = hardwareMap.get(DcMotor.class, "backLeft");
-            frontRight = hardwareMap.get(DcMotor.class, "frontRight");
-            backRight = hardwareMap.get(DcMotor.class, "backRight");
+            
 
             float power;
 
             
 
             waitForStart();
+
+          //intake
+            if (gamepad1.right_trigger > 0.1) {
+              intakePiviot.setPosition(1.0);
+              armPiviot.setPower(0.5);
+            }
+            else{
+              intakePiviot.setPostion(0);
+              armPiviot.setPower(0);
+            }
+            if (gamepad1.left_trigger > 0.1) {
+              intakePiviot.setPosition(0.5);
+            }
 
 
             double y = -gamepad1.left_stick_y; // Remember, Y stick value is reversed
