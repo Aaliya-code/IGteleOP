@@ -10,14 +10,23 @@ public class IGTeleOp extends LinearOpMode {
 
     leftElevator.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     rightElevator.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-
+    
+    // Encoders
+    leftElevator.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+    rightElevator.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        
+    leftElevator.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+    rightElevator.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+    
+    //Set position
     leftElevator.setTargetPosition(0);
     rightElevator.setTargetPosition(0);
 
      leftElevator.setMode(DcMotor.RunMode.RUN_TO_POSITION);
       rightElevator.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-    //leftElevator.setDirection(DcMotorEx.Direction.REVERSE);
+    
+    //Reverse motors
+    leftElevator.setDirection(DcMotorEx.Direction.REVERSE);
     //rightElevator.setDirection(DcMotorEx.Direction.REVERSE)
 
 
