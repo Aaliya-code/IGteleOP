@@ -1,0 +1,59 @@
+@TeleOp()
+public class IGTeleOp extends LinearOpMode {
+  DcMotorEx leftElevator, rightElevator
+
+  @Override
+    public void runOpMode() {
+
+    leftElevator = hardwareMap.get(DcMotorEx.class, "Lelevator");
+    rightElevator = hardwareMap.get(DcMotorEx.class, "Relevator");
+
+    leftElevator.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+    rightElevator.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+    leftElevator.setTargetPosition(0);
+    rightElevator.setTargetPosition(0);
+
+     leftElevator.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+      rightElevator.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+    //leftElevator.setDirection(DcMotorEx.Direction.REVERSE);
+    //rightElevator.setDirection(DcMotorEx.Direction.REVERSE)
+
+
+    waitForStart();
+
+        while(opModeIsActive()) {
+           if(gamepad1.dpad_up) {
+              leftElevator.setTargetPosition(1000); 
+                rightElevator.setTargetPosition(1000);
+                leftElevator.setPower(1.0);
+                rightElevator.setPower(1.0);
+          }
+          else if (gamepad1.dpad_down) {
+                // Retract
+                leftElevator.setTargetPosition(0);
+                rightElevator.setTargetPosition(0);
+                leftElevator.setPower(1.0);
+                rightElevator.setPower(1.0);
+          }
+          else if (gamepad1.right_bumper) {
+                // Set position for outtake
+                leftElevator.setTargetPosition(500); 
+                rightElevator.setTargetPosition(500);
+                leftElevator.setPower(1.0);
+                rightElevator.setPower(1.0);
+          }
+
+        
+
+        
+
+
+
+
+
+    
+          }
+      }
+  }
