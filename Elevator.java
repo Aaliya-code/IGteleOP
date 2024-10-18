@@ -34,8 +34,8 @@ public class IGTeleOp extends LinearOpMode {
 
         while(opModeIsActive()) {
            if(gamepad1.dpad_up) {
-              leftElevator.setTargetPosition(1000); 
-                rightElevator.setTargetPosition(1000);
+              leftElevator.setTargetPosition(2380); 
+                rightElevator.setTargetPosition(2380);
                 leftElevator.setPower(1.0);
                 rightElevator.setPower(1.0);
           }
@@ -48,8 +48,8 @@ public class IGTeleOp extends LinearOpMode {
           }
           else if (gamepad1.right_bumper) {
                 // Set position for outtake
-                leftElevator.setTargetPosition(500); 
-                rightElevator.setTargetPosition(500);
+                leftElevator.setTargetPosition(1745); 
+                rightElevator.setTargetPosition(1745);
                 leftElevator.setPower(1.0);
                 rightElevator.setPower(1.0);
           }
