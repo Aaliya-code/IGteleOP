@@ -9,14 +9,15 @@ public class Arm {
 
     DcMotorEx arm;
     Servo pivot;
-    double pivotExtendedPos = 0;
-    double pivotRetractedPos = 1;
-    int armExtendedPos = 0;
-    int armRetractedPos = 0;
+    int armIntaking = 350;
+    int armOuttaking = 100;
+    double pivotIntaking = 0.1;
+    double pivotOuttaking = 0.4;
 
     public void init(HardwareMap hardwareMap) {
         arm = initDcMotor(hardwareMap, "arm", DcMotor.Direction.FORWARD);
         pivot = hardwareMap.get(Servo.class, "ipivot");
+        pivot.setPosition(0.5);
     }
 
     public DcMotorEx initDcMotor(HardwareMap hardwareMap,
@@ -25,24 +26,24 @@ public class Arm {
         DcMotorEx m = hardwareMap.get(DcMotorEx.class, name);
         m.setDirection(dir);
         m.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        m.setTargetPosition(m.getCurrentPosition());
+        m.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        m.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        m.setTargetPosition(0);
         m.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         m.setPower(0.5);
         return m;
     }
 
-    public void extend() {
-        pivot.setPosition(pivotExtendedPos);
-        arm.setTargetPosition(armExtendedPos);
-        arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        arm.setPower(0.5);
+    public void intaking() {
+        pivot.setPosition(pivotIntaking);
+        arm.setTargetPosition(armIntaking);
+        arm.setPower(1);
     }
 
-    public void retract() {
-        pivot.setPosition(pivotRetractedPos);
-        arm.setTargetPosition(armRetractedPos);
-        arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        arm.setPower(0.5);
+    public void outtaking() {
+        pivot.setPosition(pivotOuttaking);
+        arm.setTargetPosition(armOuttaking);
+        arm.setPower(1);
     }
 
 
